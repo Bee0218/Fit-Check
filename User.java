@@ -1,11 +1,13 @@
+import java.util.Scanner;
+
 public class User
 {
     public String id;
     public String name;
-    public Closet fallcloset;
-    public Closet wintercloset;
-    public Closet springcloset;
-    public Closet summercloset;
+    public Closet fallCloset;
+    public Closet winterCloset;
+    public Closet springCloset;
+    public Closet summerCloset;
 
 
 
@@ -14,10 +16,10 @@ public class User
     {
         this.id = id;
         this.name = name;
-        fallcloset = null;
-        wintercloset = null;
-        springcloset = null;
-        summercloset = null;
+        fallCloset = null;
+        winterCloset = null;
+        springCloset = null;
+        summerCloset = null;
     }
 
     public String getId()
@@ -25,9 +27,24 @@ public class User
         return id;
     }
 
-    public getCloset()
+    public Closet getWinterCloset()
     {
-        return closet;
+        return winterCloset;
     }
 
+    public Closet getFallCloset()
+    {
+        return fallCloset;
+    }
+
+    public Closet getSpringCloset()
+    {
+        return springCloset;
+    }
+
+    public Closet getSummerCloset()
+    {
+        return summerCloset;
+    }
+    
 }
