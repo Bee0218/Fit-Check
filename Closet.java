@@ -15,7 +15,7 @@ public class Closet
 
     public int max; //the MAX temp
     public int min; //the MIN temp
-    public ArrayList<String> colours = new ArrayList<Clothing>();
+    public ArrayList<Clothing> colours = new ArrayList<Clothing>();
 
 
     public void openCloset()
@@ -23,17 +23,17 @@ public class Closet
         System.out.println("Jackets: ");
         for (int i = 0; i < jackets.size(); i++)
         {
-            System.out.println(jackets.get(i).getname());
+            System.out.println(jackets.get(i).getName());
         }
         System.out.println("Tops: ");
         for (int i = 0; i < tops.size(); i++)
         {
-            System.out.println(tops.get(i).getname());
+            System.out.println(tops.get(i).getName());
         }
         System.out.println("Bottoms: ");
         for (int i = 0; i < bottoms.size(); i++)
         {
-            System.out.println(tops.get(i).getname());
+            System.out.println(tops.get(i).getName());
         }
         
     } 
@@ -51,6 +51,41 @@ public class Closet
         if (clothing.getCategory() == Clothing.Category.BOTTOM)
         {
             bottoms.add(clothing);
+        }
+    }
+
+    public void removeItem(Clothing clothing)
+    {
+        if (clothing.getCategory() == Clothing.Category.JACKET)
+        {
+            jackets.remove(clothing);
+        }
+        if (clothing.getCategory() == Clothing.Category.TOP)
+        {
+            tops.remove(clothing);
+        }
+        if (clothing.getCategory() == Clothing.Category.BOTTOM)
+        {
+            bottoms.remove(clothing);
+        }
+    }
+
+    public void getItems()
+    {
+        System.out.println("Jackets: ");
+        for (int i = 0; i < jackets.size(); i++)
+        {
+            System.out.println(jackets.get(i).getName());
+        }
+        System.out.println("Tops: ");
+        for (int i = 0; i < tops.size(); i++)
+        {
+            System.out.println(tops.get(i).getName());
+        }
+        System.out.println("Bottoms: ");
+        for (int i = 0; i < bottoms.size(); i++)
+        {
+            System.out.println(tops.get(i).getName());
         }
     }
 
