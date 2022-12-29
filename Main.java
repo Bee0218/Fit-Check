@@ -6,13 +6,13 @@ public class Main {
 
         // create a dictionary to store the users
         static Dictionary<Integer, User> dict = new Dictionary<Integer, User>();
-        dict.put(1, new User("John", "Doe", 1));
-        dict.put(2, new User("Jane", "Dog", 2));
+        dict.put(1, new User("1234", "John Doe"));
+        dict.put(2, new User("5678", "Jane Doe"));
 
         // ask user for their id
         Scanner in = new Scanner(System.in);
         System.out.println("Please enter your id: ");
-        int id = in.nextInt();
+        String id = in.nextLine();
 
         // get user object with the id
         User user = dict.get(id);
@@ -43,7 +43,10 @@ public class Main {
                     // add a new item to the wardrobe
                     // ask user what category of clothing they want to add
                     System.out.println("What category of clothing would you like to add?");
-                    String category = in.nextLine();
+                    // find which category the user has chosen and store it in a variable called category
+
+                    Category category = in.nextLine();
+
                     // ask user what colour the clothing is
                     System.out.println("What colour is the clothing?");
                     String colour = in.nextLine();
@@ -54,10 +57,51 @@ public class Main {
                     System.out.println("Which closet would you like to add the clothing to? \n Winter, Summer, Fall, Spring");
                     String closet = in.nextLine();
 
+                    // create a new clothing object
+                    Clothing clothing = new Clothing(name, colour, category);
+
+                    while (closet.equalsIgnoreCase("winter") || closet.equalsIgnoreCase("summer") || closet.equalsIgnoreCase("fall") || closet.equalsIgnoreCase("spring")) {
+                        System.out.println("Invalid closet. Please try again.");
+                        closet = in.nextLine();
+                    }
+
                     // add the clothing to the closet
-                    user.openCloset(closet).addClothing(name, colour, category);
-                    // print out the clothing that was added
-                    System.out.println("You have added " + name + " to your " + closet + " closet.");
+                    if (closet.equalsIgnoreCase("winter"))
+                    {
+                        user.getWinterCloset().addItem(clothing);
+                        System.out.println("You have added " + name + " to your " + closet + " closet.");
+
+                        // print out the items in the given closet
+                        System.out.println("Here are the items in your " + closet + " closet:");
+                        user.getWinterCloset().getItems();
+                    }
+                    else if (closet.equalsIgnoreCase("summer"))
+                    {
+                        user.getSummerCloset().addItem(clothing);
+                        System.out.println("You have added " + name + " to your " + closet + " closet.");
+
+                        // print out the items in the given closet
+                        System.out.println("Here are the items in your " + closet + " closet:");
+                        user.getWinterCloset().getItems();
+                    }
+                    else if (closet.equalsIgnoreCase("fall"))
+                    {
+                        user.getFallCloset().addItem(clothing);
+                        System.out.println("You have added " + name + " to your " + closet + " closet.");
+
+                        // print out the items in the given closet
+                        System.out.println("Here are the items in your " + closet + " closet:");
+                        user.getWinterCloset().getItems();
+                    }
+                    else if (closet.equalsIgnoreCase("spring"))
+                    {
+                        user.getSpringCloset().addItem(clothing);
+                        System.out.println("You have added " + name + " to your " + closet + " closet.");
+
+                        // print out the items in the given closet
+                        System.out.println("Here are the items in your " + closet + " closet:");
+                        user.getWinterCloset().getItems();
+                    }
 
 
 
