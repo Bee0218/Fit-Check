@@ -1,10 +1,26 @@
 import java.util.Scanner;
 
 public class Main {
+
+
+    // create a dictionary to store the users
+    static Dictionary<Integer, User> dict = new Dictionary<Integer, User>();
+    dict.put(1, new User("John", "Doe", 1));
+    dict.put(2, new User("Jane", "Dog", 2));
+
     
     public static void main(String[] args) {
         
+        // ask user for their id
         Scanner in = new Scanner(System.in);
+        System.out.println("Please enter your id: ");
+        int id = in.nextInt();
+
+        // get user object with the id
+        User user = dict.get(id);
+
+
+        // create a menu for the user to choose from
         System.out.println("--------------------------------------------");
         System.out.println("\tWelcome to the FitCheck app!");
         System.out.println("--------------------------------------------");
@@ -36,12 +52,15 @@ public class Main {
                     // ask user what the name of the clothing is
                     System.out.println("What is the name of the clothing?");
                     String name = in.nextLine();
-
                     // ask user which closet they want to add the clothing to
                     System.out.println("Which closet would you like to add the clothing to? \n Winter, Summer, Fall, Spring");
                     String closet = in.nextLine();
 
-                    
+                    // add the clothing to the closet
+                    user.openCloset(closet).addClothing(name, colour, category);
+                    // print out the clothing that was added
+                    System.out.println("You have added " + name + " to your " + closet + " closet.");
+
 
 
                     break;
