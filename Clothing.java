@@ -2,9 +2,10 @@ public class Clothing
 {
     //propertiets of the clothing class
     public static enum Category {JACKET, TOP, BOTTOM};
-    public String name;
-    public String colour;
-    public Category category;
+
+    private String name;
+    private String colour;
+    private Category category;
 
     //constructor method
     public Clothing(String name, String colour, Category category)
@@ -15,12 +16,12 @@ public class Clothing
 
     }
 
-    public String getname()
+    public String getName()
     {
         return name;
     }
 
-    public String getcolour()
+    public String getColour()
     {
         return colour;
     }
@@ -30,17 +31,17 @@ public class Clothing
         return category;
     }
 
-    public void changename(String name)
+    public void changeName(String name)
     {
         this.name = name;
     }
 
-    public void changecolour(String colour)
+    public void changeColour(String colour)
     {
         this.colour = colour;
     }
 
-    public void changecategory(Category category)
+    public void changeCategory(Category category)
     {
         this.category = category;
     }
