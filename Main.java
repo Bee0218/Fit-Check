@@ -1,13 +1,15 @@
 import java.util.Scanner;
+import java.util.ArrayList;
+
 
 public class Main {
 
     public static void main(String[] args) {
 
         // create a dictionary to store the users
-        static Dictionary<Integer, User> dict = new Dictionary<Integer, User>();
-        dict.put(1, new User("1234", "John Doe"));
-        dict.put(2, new User("5678", "Jane Doe"));
+        ArrayList<User> dict = new ArrayList<User>();
+        dict.add(new User("1234", "John Doe"));
+        dict.add(new User("5678", "Jane Doe"));
 
         // ask user for their id
         Scanner in = new Scanner(System.in);
@@ -15,7 +17,7 @@ public class Main {
         String id = in.nextLine();
 
         // get user object with the id
-        User user = dict.get(id);
+        User user = getUser(id, dict);
 
 
         // create a menu for the user to choose from
@@ -35,33 +37,35 @@ public class Main {
 
         // while loop to keep the program running until the user wants to exit
         while ( choice != 5 ) {
-            
+            in.nextLine();
 
             // switch statement to determine which option the user has chosen
             switch (choice) {
                 case 1:
                     // add a new item to the wardrobe
                     // ask user what category of clothing they want to add
-                    System.out.println("What category of clothing would you like to add?");
+                    System.out.println("\nWhat category of clothing would you like to add?");
                     // find which category the user has chosen and store it in a variable called category
-
-                    Category category = in.nextLine();
+                    String category = in.nextLine();
 
                     // ask user what colour the clothing is
-                    System.out.println("What colour is the clothing?");
+                    System.out.println("\nWhat colour is the clothing?");
                     String colour = in.nextLine();
+
                     // ask user what the name of the clothing is
-                    System.out.println("What is the name of the clothing?");
+                    System.out.println("\nWhat is the name of the clothing?");
                     String name = in.nextLine();
-                    // ask user which closet they want to add the clothing to
-                    System.out.println("Which closet would you like to add the clothing to? \n Winter, Summer, Fall, Spring");
-                    String closet = in.nextLine();
 
                     // create a new clothing object
-                    Clothing clothing = new Clothing(name, colour, category);
+                    Clothing clothing = new Clothing(name, colour, Clothing.Category.valueOf(category.toUpperCase()));
 
-                    while (closet.equalsIgnoreCase("winter") || closet.equalsIgnoreCase("summer") || closet.equalsIgnoreCase("fall") || closet.equalsIgnoreCase("spring")) {
-                        System.out.println("Invalid closet. Please try again.");
+                    // ask user which closet they want to add the clothing to
+                    System.out.println("\nWhich closet would you like to add the clothing to? \n Winter, Summer, Fall, Spring");
+                    String closet = in.nextLine();
+                    System.out.println(closet);
+                    
+                    while (!(closet.equalsIgnoreCase("winter") || closet.equalsIgnoreCase("summer") || closet.equalsIgnoreCase("fall") || closet.equalsIgnoreCase("spring"))) {
+                        System.out.println("\nInvalid closet. Please try again.");
                         closet = in.nextLine();
                     }
 
@@ -136,6 +140,17 @@ public class Main {
         }
 
 
+    }
+
+    public static User getUser(String id, ArrayList<User> dict) {
+        for (User user : dict) {
+            if (user.getId().equals(id)) {
+                System.out.println(id + " is a valid id.");
+                return user;
+            }
+        }
+        System.out.println(id + " is not a valid id.");
+        return null;
     }
 
 }
